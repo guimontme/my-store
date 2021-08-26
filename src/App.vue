@@ -1,9 +1,33 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <Header />
+    <main>
+      <router-view></router-view>
+    </main>
+    <Footer />
   </div>
 </template>
 
-<style lang="scss">
+<script>
+import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
+export default {
+  name: "App",
+  components: {
+    Header,
+    Footer,
+  },
+};
+</script>
 
+<style lang="scss">
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  main {
+    flex: 1;
+  }
+}
 </style>

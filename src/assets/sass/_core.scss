@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+}
+
+@import "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap";
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font_sans;
+  background: url("~@/assets/img/bg-my-store.svg") repeat top center;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: $secondary;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: 1140px;
+  padding: 16px;
+  margin: 0 auto;
+}
+
+// Button
+.btn {
+  display: block;
+  background: $tertiary;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0 4px 8px rgba($primary, 0.4);
+  transition: all 0.3s cubic-bezier(1, 0.48, 0.44, 1.47);
+  cursor: pointer;
+
+  &:hover {
+    background: $secondary;
+    transform: scale(1.1);
+  }
+}
