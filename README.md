@@ -1,4 +1,4 @@
-# My Store,
+# My Store
 
 ## A little store built with [Vue.js](https://vuejs.org/)
 
