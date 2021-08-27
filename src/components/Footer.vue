@@ -2,10 +2,18 @@
   <footer id="footer">
     <div class="container">
       <p>
-        &copy; 2021 - My Store. All rights reserved - Developed by
-        <a href="https://guimont.me" target="_blank" rel="noopener noreferrer"
-          >Gui Mont</a
-        >
+        <span>
+          &copy; 2021 - My Store.
+        </span>
+        <span>
+          All rights reserved.
+        </span>
+        <span>
+          Developed by
+          <a href="https://guimont.me" target="_blank" rel="noopener noreferrer"
+            >Gui Mont</a
+          >
+        </span>
       </p>
     </div>
   </footer>
@@ -24,13 +32,19 @@ footer#footer {
   text-align: center;
   margin-top: 20px;
   position: relative;
-  top: 65px;
+  top: 85px;
   p {
-    color: $orange;
+    color: $offwhite;
+    margin-bottom: 0;
+    span {
+      display: inline-block;
+      margin: 0 0.5rem;
+    }
     a {
       text-decoration: none;
-      color: $orange;
+      color: $offwhite;
       &:hover {
+        color: $lightyellow;
         text-shadow: 1px 2px 4px $dark_primary;
       }
     }

@@ -1,10 +1,36 @@
-$primary: #33304e;
-$secondary: #2a5761;
-$tertiary: #407d7d;
-$magent: #fb3257;
-$orange: #ff7d38;
-$dark_primary: #211f33;
-$dark_secondary: #193238;
-$dark_tertiary: #407d7d;
+$primary: #130f40;
+$secondary: #30336b;
+$tertiary: #4834d4;
+$light_tertiary: #686de0;
+$carmine: #eb4d4b;
+$pink: #be2edd;
+$orange: #f0932b;
+$yellow: #f9ca24;
+$green: #6ab04c;
+$lightcamine: #ff7979;
+$lightgreen: #badc58;
+$lightyellow: #f6e58d;
+$lightorange: #ffbe76;
+$lightpink: #e056fd;
+$dark_primary: darken(#130f40, 40);
+$dark_secondary: darken(#30336b, 20);
+$dark_tertiary: darken(#4834d4, 20);
+$gray: #535c68;
+$lightgray: #95afc0;
+$offwhite: #dff9fb;
 
 $font_sans: "Poppins", Helvetica, Arial, sans-serif;
+
+$font-size: 100%;
+$ratio: 1.333;
+
+$size-4: 1rem;
+$size-5: $size-4 * $ratio;
+$size-6: $size-5 * $ratio;
+$size-7: $size-6 * $ratio;
+$size-8: $size-7 * $ratio;
+$size-9: $size-8 * $ratio;
+
+$size-3: $size-4 / $ratio;
+$size-2: $size-3 / $ratio;
+$size-1: $size-2 / $ratio;
