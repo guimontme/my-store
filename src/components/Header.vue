@@ -1,8 +1,10 @@
 <template>
   <header id="header">
     <nav class="container">
-      <router-link to="/" id="logo" tag="h1">
-        My Store
+      <router-link to="/" id="logo" custom v-slot="{ navigate }">
+        <h1 @click="navigate" @keypress.enter="navigate" role="link">
+          My Store
+        </h1>
       </router-link>
       <router-link to="/login" class="btn">
         Login
