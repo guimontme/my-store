@@ -30,7 +30,6 @@ footer#footer {
   padding: 1rem 0;
   background-color: $secondary;
   text-align: center;
-  margin-top: 20px;
   position: relative;
   top: 85px;
   p {

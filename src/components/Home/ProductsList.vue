@@ -1,46 +1,128 @@
 <template>
-  <section class="products_list">
-    <div v-for="product in products" :key="product.id" class="product_card">
-      <img
-        v-if="product.fotos.length"
-        :src="product.fotos[0].src"
-        :alt="product.fotos[0].title"
-      />
-      <p class="product_price">R$ {{ product.price }}</p>
-      <p class="product_name">{{ product.name }}</p>
-      <p class="product_description">{{ product.description }}</p>
+  <section class="products-container">
+    <div v-if="products && products.length" class="products">
+      <div
+        v-for="(product, index) in products"
+        :key="product.id + index"
+        class="product_card"
+      >
+        <router-link to="">
+          <img
+            v-if="product.fotos.length"
+            :src="product.fotos[0].src"
+            :alt="product.fotos[0].title"
+            class="product_img"
+          />
+          <p class="product_price">R$ {{ product.price }}</p>
+          <h3 class="product_name">{{ product.name }}</h3>
+          <p class="product_description">{{ product.description }}</p>
+        </router-link>
+      </div>
+      <ProductPagination :perPage="perPage" :productsTotal="productsTotal" />
+    </div>
+    <div v-else-if="products && products.length === 0" class="not_found">
+      <h2>No results are found for "{{ $route.query.q }}"</h2>
+    </div>
+    <div v-else>
+      <Loading />
     </div>
   </section>
 </template>
 
 <script>
 import { api } from "@/services.js";
+import { serialize } from "@/helpers.js";
+import ProductPagination from "@/components/Home/ProductPagination.vue";
 
 export default {
   name: "ProductList",
+  components: {
+    ProductPagination,
+  },
   data() {
     return {
       products: [],
+      perPage: 9,
+      productsTotal: 0,
+      loading: false,
     };
+  },
+  computed: {
+    url() {
+      const queryString = serialize(this.$route.query);
+      return `/products?_limit=${this.perPage}${queryString}`;
+    },
+  },
+  methods: {
+    fetchProducts() {
+      api.get(this.url).then((response) => {
+        this.productsTotal = Number(response.headers["x-total-count"]);
+        return (this.products = response.data);
+      });
+    },
   },
   created() {
     this.fetchProducts();
   },
-  methods: {
-    fetchProducts() {
-      api.get("/products").then((response) => (this.products = response.data));
+  watch: {
+    url() {
+      this.fetchProducts();
     },
   },
 };
 </script>
 
 <style lang="scss">
-section.products_list {
-  .product_card {
-    padding: 20px;
-    border-radius: 4px;
-    border: 1px solid $primary;
-    margin-top: 10px;
+section.products-container {
+  .products {
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+
+    @include desktop-only {
+      margin: 30px;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 30px;
+    }
+
+    .product_card {
+      padding: 10px;
+      margin-top: 10px;
+      background: #fff;
+      @include box-style;
+      transition: all 0.3s;
+
+      &:hover {
+        box-shadow: 0 6px 12px rgba($primary, 0.4);
+        transform: scale(1.1);
+        position: relative;
+        z-index: 1;
+      }
+      .product_img {
+        border-radius: 4px;
+        margin-bottom: 1.2rem;
+      }
+      .product_price {
+        font-weight: 600;
+        color: $yellow;
+        margin-bottom: 0;
+      }
+      .product_name {
+        margin-bottom: 10px;
+      }
+      .product_description {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .not_found {
+    padding: 3rem;
+    text-align: center;
+    h2 {
+      font-size: $size-5;
+      color: $carmine;
+    }
   }
 }
 </style>

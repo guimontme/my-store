@@ -3,3 +3,28 @@
     @content;
   }
 }
+
+@mixin box-style {
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba($primary, 0.4);
+}
+
+@mixin input_style {
+  border-radius: 4px;
+  border: 2px solid white;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba($primary, 0.4);
+  transition: all 0.3s;
+  font-size: 1rem;
+
+  &:focus,
+  &:hover {
+    outline: none;
+    box-shadow: 0 8px 12px rgba($primary, 0.4);
+    border-color: $secondary;
+  }
+}
+
+@mixin border_radius {
+  border-radius: $border-radius;
+}

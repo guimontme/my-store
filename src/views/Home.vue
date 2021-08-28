@@ -21,8 +21,6 @@ export default {
 
 <style lang="scss">
 section.home {
-  padding: 20px;
-
   h1 {
     font-size: $size-6;
     font-weight: bold;
