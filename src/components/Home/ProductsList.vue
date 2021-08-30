@@ -7,14 +7,14 @@
           :key="product.id + index"
           class="product_card"
         >
-          <router-link to="">
+          <router-link :to="{ name: 'product', params: { id: product.id } }">
             <img
-              v-if="product.fotos.length"
-              :src="product.fotos[0].src"
-              :alt="product.fotos[0].title"
+              v-if="product.photos.length > 0"
+              :src="product.photos[0].src"
+              :alt="product.photos[0].title"
               class="product_img"
             />
-            <p class="product_price">R$ {{ product.price }}</p>
+            <p class="product_price">{{ product.price | numberPrice }}</p>
             <h3 class="product_name">{{ product.name }}</h3>
             <p class="product_description">{{ product.description }}</p>
           </router-link>
@@ -28,14 +28,14 @@
       >
         <h2>No results are found for "{{ $route.query.q }}"</h2>
       </div>
-      <PageLoading v-else class="not_found" key="loading" />
+      <PageLoading v-else key="loading" />
     </transition>
   </section>
 </template>
 
 <script>
-import { api } from "@/services.js";
-import { serialize } from "@/helpers.js";
+import { api } from "@/services";
+import { serialize } from "@/helpers";
 import ProductPagination from "@/components/Home/ProductPagination.vue";
 
 export default {
@@ -65,7 +65,7 @@ export default {
           this.productsTotal = Number(response.headers["x-total-count"]);
           return (this.products = response.data);
         });
-      }, 1500);
+      }, 1000);
     },
   },
   created() {

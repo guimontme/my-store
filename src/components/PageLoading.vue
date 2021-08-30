@@ -12,6 +12,8 @@ export default {
 
 <style lang="scss">
 .loading {
+  text-align: center;
+  grid-column: 1/-1;
   span {
     display: inline-block;
     width: 10px;
