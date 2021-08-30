@@ -1,7 +1,7 @@
 <template>
   <section class="login">
     <h1>Login</h1>
-    <form>
+    <form class="login_form">
       <label for="email">Email</label>
       <input
         type="email"
@@ -76,11 +76,11 @@ section.login {
       text-decoration: underline;
     }
   }
-  form {
+  form.login_form {
     display: grid;
     margin: 0 auto;
     width: 100%;
-    w input {
+    input {
       width: 100%;
       font-style: 1.5rem !important;
     }

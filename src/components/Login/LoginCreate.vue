@@ -1,20 +1,48 @@
 <template>
-  <div class="login_create">
-    <p>Login Create</p>
-    <!-- <form>
-      <label for="email_create">Email</label>
-      <input type="email" name="email_create" id="email_create" />
-      <label for="password">Password</label>
-      <input type="password" name="password_create" id="password_create" />
-      <button class="btn" @click.prevent="">Enter</button>
-    </form> -->
-  </div>
+  <section class="login_create">
+    <h2>Create your account</h2>
+    <transition mode="out-in">
+      <button v-if="!create" class="btn" @click="create = true">Create</button>
+      <UserForm class="create_form" v-else>
+        <button class="btn" @click="createUser">Create user</button>
+      </UserForm>
+    </transition>
+  </section>
 </template>
 
 <script>
+import UserForm from "@/components/MyAccount/UserForm.vue";
 export default {
   name: "LoginCreate",
+  components: {
+    UserForm,
+  },
+  data() {
+    return {
+      create: false,
+    };
+  },
 };
 </script>
 
-<style></style>
+<style lang="scss">
+section.login_create {
+  margin-top: 20px;
+  width: 100%;
+  h2 {
+    font-size: 2rem;
+    text-align: center;
+  }
+  .btn {
+    width: 80%;
+    margin: 0 auto;
+    text-transform: none;
+    margin-top: 20px !important;
+  }
+  .create_form {
+    .btn {
+      width: 100%;
+    }
+  }
+}
+</style>
