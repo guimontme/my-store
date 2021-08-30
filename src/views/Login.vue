@@ -3,13 +3,20 @@
     <h1>Login</h1>
     <form>
       <label for="email">Email</label>
-      <input type="email" name="email" id="email" v-model="login.email" />
+      <input
+        type="email"
+        name="email"
+        id="email"
+        v-model="login.email"
+        required
+      />
       <label for="password">Password</label>
       <input
         type="password"
         name="password"
         id="password"
         v-model="login.password"
+        required
       />
       <button class="btn" @click.prevent="handleLogin">Enter</button>
     </form>
@@ -37,7 +44,13 @@ export default {
   },
   methods: {
     handleLogin() {
-      console.log(this.login.email, this.login.password);
+      if (this.login.email && this.login.password) {
+        this.$store.dispatch("getUser", {
+          id: this.login.email,
+          password: this.login.password,
+        });
+        this.$router.push({ name: "Profile" });
+      }
     },
   },
 };

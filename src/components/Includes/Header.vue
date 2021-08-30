@@ -6,7 +6,13 @@
           My Store
         </h1>
       </router-link>
-      <router-link to="/login" class="btn">
+      <router-link
+        v-if="this.$store.state.login"
+        class="btn"
+        to="/my-account"
+        >{{ name }}</router-link
+      >
+      <router-link v-else to="/login" class="btn">
         Login
       </router-link>
     </nav>
@@ -16,6 +22,11 @@
 <script>
 export default {
   name: "Header",
+  computed: {
+    name() {
+      return this.$store.state.user.name.replace(/ .*/, "");
+    },
+  },
 };
 </script>
 
