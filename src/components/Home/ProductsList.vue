@@ -1,31 +1,35 @@
 <template>
   <section class="products-container">
-    <div v-if="products && products.length" class="products">
-      <div
-        v-for="(product, index) in products"
-        :key="product.id + index"
-        class="product_card"
-      >
-        <router-link to="">
-          <img
-            v-if="product.fotos.length"
-            :src="product.fotos[0].src"
-            :alt="product.fotos[0].title"
-            class="product_img"
-          />
-          <p class="product_price">R$ {{ product.price }}</p>
-          <h3 class="product_name">{{ product.name }}</h3>
-          <p class="product_description">{{ product.description }}</p>
-        </router-link>
+    <transition mode="out-in">
+      <div v-if="products && products.length" class="products" key="produtos">
+        <div
+          v-for="(product, index) in products"
+          :key="product.id + index"
+          class="product_card"
+        >
+          <router-link to="">
+            <img
+              v-if="product.fotos.length"
+              :src="product.fotos[0].src"
+              :alt="product.fotos[0].title"
+              class="product_img"
+            />
+            <p class="product_price">R$ {{ product.price }}</p>
+            <h3 class="product_name">{{ product.name }}</h3>
+            <p class="product_description">{{ product.description }}</p>
+          </router-link>
+        </div>
+        <ProductPagination :perPage="perPage" :productsTotal="productsTotal" />
       </div>
-      <ProductPagination :perPage="perPage" :productsTotal="productsTotal" />
-    </div>
-    <div v-else-if="products && products.length === 0" class="not_found">
-      <h2>No results are found for "{{ $route.query.q }}"</h2>
-    </div>
-    <div v-else>
-      <Loading />
-    </div>
+      <div
+        v-else-if="products && products.length === 0"
+        class="not_found"
+        key="not_found"
+      >
+        <h2>No results are found for "{{ $route.query.q }}"</h2>
+      </div>
+      <PageLoading v-else class="not_found" key="loading" />
+    </transition>
   </section>
 </template>
 
@@ -50,23 +54,26 @@ export default {
   computed: {
     url() {
       const queryString = serialize(this.$route.query);
-      return `/products?_limit=${this.perPage}${queryString}`;
+      return `/products?sold=false&_limit=${this.perPage}${queryString}`;
     },
   },
   methods: {
-    fetchProducts() {
-      api.get(this.url).then((response) => {
-        this.productsTotal = Number(response.headers["x-total-count"]);
-        return (this.products = response.data);
-      });
+    getProducts() {
+      this.products = null;
+      window.setTimeout(() => {
+        api.get(this.url).then((response) => {
+          this.productsTotal = Number(response.headers["x-total-count"]);
+          return (this.products = response.data);
+        });
+      }, 1500);
     },
   },
   created() {
-    this.fetchProducts();
+    this.getProducts();
   },
   watch: {
     url() {
-      this.fetchProducts();
+      this.getProducts();
     },
   },
 };
@@ -87,11 +94,18 @@ section.products-container {
     }
 
     .product_card {
-      padding: 10px;
       margin-top: 10px;
       background: #fff;
+      position: relative;
+      padding: 0;
       @include box-style;
       transition: all 0.3s;
+      > a {
+        padding: 10px;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
 
       &:hover {
         box-shadow: 0 6px 12px rgba($primary, 0.4);

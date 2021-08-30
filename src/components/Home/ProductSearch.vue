@@ -6,6 +6,7 @@
       name="search"
       id="search"
       v-model="search"
+      @keyup.enter="searchProduct"
     />
     <input
       type="submit"
