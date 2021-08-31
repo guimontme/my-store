@@ -12,6 +12,7 @@ import ProductsList from "@/components/Home/ProductsList.vue";
 
 export default {
   name: "Home",
+  title: "My Store - Home",
   components: {
     ProductSearch,
     ProductsList,

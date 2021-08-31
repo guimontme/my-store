@@ -34,10 +34,11 @@ export default {
     },
   },
   methods: {
-    getProduct() {
+    async getProduct() {
       setTimeout(() => {
         api.get(this.url).then((response) => {
-          return (this.product = response.data);
+          this.product = response.data;
+          document.title = this.product.name + " - My Shop";
         });
       }, 1000);
     },

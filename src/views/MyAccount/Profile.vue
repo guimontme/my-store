@@ -11,6 +11,7 @@
 import UserMenuSidebar from "@/components/MyAccount/UserMenuSidebar.vue";
 export default {
   name: "Profile",
+  title: "My Account - My Store",
   components: {
     UserMenuSidebar,
   },
@@ -34,12 +35,12 @@ export default {
 
 <style lang="scss">
 section.my_account {
-  padding-top: 40px;
+  padding: 40px 30px;
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 2rem;
   @include break-sm {
-    grid-template-columns: 100px 1fr;
+    grid-template-columns: minmax(140px, 200px) 1fr;
   }
 }
 </style>

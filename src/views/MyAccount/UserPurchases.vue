@@ -7,6 +7,7 @@
 <script>
 export default {
   name: "UserPurchases",
+  title: "My Purchases - My Store",
 };
 </script>
 

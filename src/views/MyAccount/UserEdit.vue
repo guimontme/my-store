@@ -7,6 +7,7 @@
 <script>
 export default {
   name: "UserEdit",
+  title: "Edit User - My Store",
 };
 </script>
 

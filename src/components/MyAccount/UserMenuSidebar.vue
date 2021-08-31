@@ -14,7 +14,7 @@
         <router-link :to="{ name: 'EditUser' }">Edit User</router-link>
       </li>
       <li>
-        <button @click.prevent="logout">Logout</button>
+        <button @click="logout">Logout</button>
       </li>
     </ul>
   </nav>
@@ -54,8 +54,8 @@ export default {
         width: 100%;
         text-align: center;
         padding: 4px 10px;
-        @include box-style;
-        background: #fff;
+        @include border_radius;
+        background: lighten($lightgray, 25);
         font-size: 1rem;
         color: $secondary;
 
@@ -69,6 +69,7 @@ export default {
         font-family: $font_sans;
         padding: 5px 10px;
         /* height: 36px; */
+        border: none;
       }
     }
   }

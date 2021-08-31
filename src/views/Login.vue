@@ -31,6 +31,7 @@
 import LoginCreate from "@/components/Login/LoginCreate.vue";
 export default {
   name: "Login",
+  title: "Login - My Store",
   components: {
     LoginCreate,
   },
