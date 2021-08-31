@@ -42,5 +42,10 @@ section.my_account {
   @include break-sm {
     grid-template-columns: minmax(140px, 200px) 1fr;
   }
+  margin-bottom: -80px;
+  h1 {
+    line-height: 1;
+    margin-top: -2px;
+  }
 }
 </style>

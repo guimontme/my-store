@@ -1,7 +1,7 @@
 <template>
   <section class="product">
-    <div v-if="product">
-      <ul class="fotos" v-if="product.photos.length > 0">
+    <div class="product" v-if="product">
+      <ul class="photos" v-if="product.photos.length > 0">
         <li v-for="(photo, index) in photos" :key="index">
           <img :src="photo.src" :alt="photo.title" />
         </li>
@@ -51,11 +51,17 @@ export default {
 
 <style lang="scss">
 section.product {
-  @include break-sm {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 30px;
-    padding: 3rem 30px;
+  > div.product {
+    @include break-sm {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 30px;
+      padding: 3rem 30px;
+    }
+  }
+  .photos {
+    display: flex;
+    overflow: hidden;
   }
   .info {
     .product_name {

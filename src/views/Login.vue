@@ -67,11 +67,13 @@ section.login {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  min-height: 75vh;
+  /* min-height: 75vh; */
   max-width: 80vw;
   @include break-sm {
     max-width: 500px;
+    margin-bottom: -60px;
   }
+  margin-bottom: -80px;
   margin: auto;
   h1,
   p.lost {

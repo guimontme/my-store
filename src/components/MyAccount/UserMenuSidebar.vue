@@ -52,7 +52,7 @@ export default {
       button {
         display: block;
         width: 100%;
-        text-align: center;
+        text-align: left;
         padding: 4px 10px;
         @include border_radius;
         background: lighten($lightgray, 25);

@@ -27,7 +27,7 @@
   &:hover {
     outline: none;
     box-shadow: 0 8px 12px rgba($primary, 0.4);
-    border-color: $secondary;
+    border-color: lighten($secondary, 30);
   }
 }
 
