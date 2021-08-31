@@ -43,13 +43,17 @@ export default {
     };
   },
   methods: {
-    handleLogin() {
-      if (this.login.email && this.login.password) {
-        this.$store.dispatch("getUser", {
-          id: this.login.email,
-          password: this.login.password,
-        });
-        this.$router.push({ name: "Profile" });
+    async handleLogin() {
+      try {
+        if (this.login.email && this.login.password) {
+          const getUser = await this.$store.dispatch("getUser", {
+            id: this.login.email,
+            password: this.login.password,
+          });
+          if (getUser) await this.$router.push({ name: "Profile" });
+        }
+      } catch (err) {
+        console.log(err);
       }
     },
   },
