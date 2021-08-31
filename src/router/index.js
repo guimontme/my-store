@@ -4,6 +4,10 @@ import Home from "../views/Home.vue";
 import Product from "../views/Product.vue";
 import Login from "../views/Login.vue";
 import Profile from "../views/MyAccount/Profile.vue";
+import UserProducts from "../views/MyAccount/UserProducts.vue";
+import UserPurchases from "../views/MyAccount/UserPurchases.vue";
+import UserSales from "../views/MyAccount/UserSales.vue";
+import UserEdit from "../views/MyAccount/UserEdit.vue";
 
 Vue.use(VueRouter);
 
@@ -26,8 +30,29 @@ const routes = [
   },
   {
     path: "/my-account",
-    name: "Profile",
     component: Profile,
+    children: [
+      {
+        path: "",
+        name: "Profile",
+        component: UserProducts,
+      },
+      {
+        path: "purchases",
+        name: "Purchases",
+        component: UserPurchases,
+      },
+      {
+        path: "sales",
+        name: "Sales",
+        component: UserSales,
+      },
+      {
+        path: "edit-user",
+        name: "EditUser",
+        component: UserEdit,
+      },
+    ],
   },
 ];
 

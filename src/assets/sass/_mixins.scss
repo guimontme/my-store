@@ -12,6 +12,7 @@
 @mixin box-style {
   border-radius: 4px;
   box-shadow: 0 4px 8px rgba($primary, 0.4);
+  border: none;
 }
 
 @mixin input_style {
