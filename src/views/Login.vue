@@ -68,7 +68,7 @@ section.login {
   align-items: center;
   min-height: 75vh;
   max-width: 80vw;
-  @include desktop-only {
+  @include break-sm {
     max-width: 500px;
   }
   margin: auto;

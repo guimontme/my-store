@@ -36,7 +36,7 @@ export default {
 
 <style lang="scss">
 form#search_form {
-  @include desktop-only {
+  @include break-sm {
     max-width: 600px;
   }
   margin: 30px auto 60px auto;

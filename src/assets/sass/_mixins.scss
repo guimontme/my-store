@@ -1,4 +1,9 @@
-@mixin desktop-only() {
+@mixin break-md() {
+  @media screen and (min-width: 960px) {
+    @content;
+  }
+}
+@mixin break-sm() {
   @media screen and (min-width: 768px) {
     @content;
   }

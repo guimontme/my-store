@@ -101,51 +101,51 @@ h3 {
 .size {
   &-1 {
     font-size: $size-1;
-    @include desktop-only {
+    @include break-sm {
       font-size: $size-2;
     }
   }
   &-2,
   &-small {
     font-size: $size-2;
-    @include desktop-only {
+    @include break-sm {
       font-size: $size-3;
     }
   }
   &-3,
   &-regular {
     font-size: $size-3;
-    @include desktop-only {
+    @include break-sm {
       font-size: $size-4;
     }
   }
   &-4 {
     font-size: $size-4;
-    @include desktop-only {
+    @include break-sm {
       font-size: $size-5;
     }
   }
   &-5 {
     font-size: $size-5;
-    @include desktop-only {
+    @include break-sm {
       font-size: $size-6;
     }
   }
   &-6 {
     font-size: $size-6;
-    @include desktop-only {
+    @include break-sm {
       font-size: $size-7;
     }
   }
   &-7 {
     font-size: $size-7;
-    @include desktop-only {
+    @include break-sm {
       font-size: $size-8;
     }
   }
   &-8 {
     font-size: $size-8;
-    @include desktop-only {
+    @include break-sm {
       font-size: $size-9;
     }
   }

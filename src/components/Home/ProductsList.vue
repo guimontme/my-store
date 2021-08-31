@@ -87,7 +87,7 @@ section.products-container {
     grid-template-columns: 1fr;
     grid-gap: 20px;
 
-    @include desktop-only {
+    @include break-sm {
       margin: 30px;
       grid-template-columns: repeat(3, 1fr);
       grid-gap: 30px;

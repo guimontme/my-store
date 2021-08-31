@@ -27,7 +27,7 @@ section.home {
     text-align: center;
     color: $tertiary;
 
-    @include desktop-only {
+    @include break-sm {
       font-size: $size-7;
     }
   }

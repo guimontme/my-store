@@ -91,12 +91,12 @@ export default {
 form.user_form {
   display: grid;
   grid-template-columns: 100%;
-  @include desktop-only {
-    grid-template-columns: 80px 1fr;
+  @include break-sm {
+    grid-template-columns: 90px 1fr;
     grid-gap: 10px;
     align-items: center;
     label {
-      margin-top: 0;
+      margin: 0;
     }
   }
   margin: 0 auto;
@@ -106,7 +106,7 @@ form.user_form {
   }
   .button {
     text-transform: none;
-    @include desktop-only {
+    @include break-sm {
       width: 100%;
       grid-column: 2;
     }

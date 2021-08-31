@@ -50,7 +50,7 @@ export default {
 
 <style lang="scss">
 section.product {
-  @include desktop-only {
+  @include break-sm {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 30px;
