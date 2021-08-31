@@ -49,7 +49,7 @@ export default {
         photos: [],
         sold: "false",
       },
-      priceInput: "0,00",
+      priceInput: "0",
     };
   },
   methods: {
