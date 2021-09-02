@@ -9,7 +9,7 @@
 
 <script>
 import { api } from "@/services";
-import UserForm from "@/components/MyAccount/UserForm.vue";
+import UserForm from "@/components/User/UserForm.vue";
 export default {
   name: "UserEdit",
   title: "Edit User - My Store",

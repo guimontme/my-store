@@ -10,7 +10,12 @@
         <h1 class="product_name">{{ product.name }}</h1>
         <p class="product_price">{{ product.price | numberPrice }}</p>
         <p class="product_description">{{ product.description }}</p>
-        <button class="btn" v-if="product.sold === 'false'">Buy</button>
+        <transition mode="out-in" v-if="product.sold === 'false'">
+          <button class="btn btn-buy" v-if="!finalize" @click="buyProduct">
+            Buy
+          </button>
+          <FinalizePurchase v-else :product="product" />
+        </transition>
         <button class="btn" disabled v-else>Product sold</button>
       </div>
     </div>
@@ -20,12 +25,17 @@
 
 <script>
 import { api } from "@/services";
+import FinalizePurchase from "@/components/Product/FinalizePurchase.vue";
 export default {
   name: "Product",
   props: ["id"],
+  components: {
+    FinalizePurchase,
+  },
   data() {
     return {
       product: null,
+      finalize: false,
     };
   },
   computed: {
@@ -42,6 +52,9 @@ export default {
         });
       }, 1000);
     },
+    buyProduct() {
+      this.finalize = true;
+    },
   },
   created() {
     this.getProduct();
@@ -56,7 +69,7 @@ section.product {
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-gap: 30px;
-      padding: 3rem 30px;
+      padding: 20px 0;
     }
   }
   .photos {
@@ -79,9 +92,10 @@ section.product {
     .product_description {
       font-size: 1.2rem;
     }
-    .btn {
+    .btn.btn-buy {
       margin-top: 3rem;
       width: 200px;
+      font-size: 1.2rem;
     }
   }
 }

@@ -1,18 +1,20 @@
 <template>
   <form class="user_form">
-    <label for="name">Name</label>
-    <input type="text" name="name" id="name" v-model="name" />
+    <div class="user_data" v-if="showDataLogin">
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" v-model="name" />
 
-    <label for="user_email">Email</label>
-    <input type="email" name="user_email" id="user_email" v-model="email" />
+      <label for="user_email">Email</label>
+      <input type="email" name="user_email" id="user_email" v-model="email" />
 
-    <label for="user_password">Password</label>
-    <input
-      type="password"
-      name="user_password"
-      id="user_password"
-      v-model="password"
-    />
+      <label for="user_password">Password</label>
+      <input
+        type="password"
+        name="user_password"
+        id="user_password"
+        v-model="password"
+      />
+    </div>
 
     <label for="zip_code">Zip Code</label>
     <input
@@ -70,6 +72,9 @@ export default {
       base: "user",
       mutations: "UPDATE_USER",
     }),
+    showDataLogin() {
+      return !this.$store.state.login || this.$route.name === "EditUser";
+    },
   },
   methods: {
     fillCep() {
@@ -88,16 +93,20 @@ export default {
 </script>
 
 <style lang="scss">
-form.user_form {
+.user_form {
   display: grid;
-  grid-template-columns: 100%;
+  grid-template-columns: 25% 1fr;
+  grid-gap: 10px;
   @include break-sm {
     grid-template-columns: 90px 1fr;
-    grid-gap: 10px;
     align-items: center;
     label {
       margin: 0;
     }
+  }
+  .user_data {
+    grid-column: 1/3;
+    @extend .user_form;
   }
   margin: 0 auto;
   width: 100%;
@@ -106,6 +115,8 @@ form.user_form {
   }
   .button {
     text-transform: none;
+    padding-top: 10px;
+    grid-column: 1/3;
     @include break-sm {
       width: 100%;
       grid-column: 2;

@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import UserForm from "@/components/MyAccount/UserForm.vue";
+import UserForm from "@/components/User/UserForm.vue";
 export default {
   name: "LoginCreate",
   components: {
