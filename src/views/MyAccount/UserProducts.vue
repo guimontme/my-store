@@ -1,8 +1,8 @@
 <template>
   <section class="user_products">
-    <h1>Products</h1>
+    <h2>Products</h2>
     <AddProductForm />
-    <h2>Your Products</h2>
+    <h3>Your Products</h3>
     <transition-group
       v-if="user_products"
       name="list"

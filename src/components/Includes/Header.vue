@@ -1,11 +1,11 @@
 <template>
   <header id="header">
     <nav class="container">
-      <router-link to="/" id="logo" custom v-slot="{ navigate }">
-        <h1 @click="navigate" @keypress.enter="navigate" role="link">
+      <h1 id="logo">
+        <router-link :to="{ name: 'Home' }">
           My Store
-        </h1>
-      </router-link>
+        </router-link>
+      </h1>
       <router-link
         v-if="this.$store.state.login"
         class="btn"
@@ -39,15 +39,20 @@ header#header {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    padding-top: 16px;
+    padding-bottom: 16px;
 
     #logo {
+      margin: 10px 10px 10px 0;
       text-decoration: none;
       color: $primary;
       font-size: 2.5rem;
       font-weight: 600;
-      margin: 0;
       text-shadow: 2px 2px 0 $light_tertiary;
       cursor: pointer;
+      @include break-sm {
+        margin: 0;
+      }
     }
   }
 }

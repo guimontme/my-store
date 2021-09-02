@@ -30,8 +30,8 @@ export default {
 
   main {
     flex: 1;
-    padding: 20px 0;
-    margin-bottom: -80px;
+    padding-bottom: 20px;
+    margin-bottom: -60px;
   }
 }
 </style>

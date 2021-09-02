@@ -1,6 +1,6 @@
 <template>
   <section class="login">
-    <h1>Login</h1>
+    <h2>Login</h2>
     <form class="login_form">
       <label for="email">Email</label>
       <input
@@ -72,7 +72,7 @@ section.login {
     max-width: 500px;
   }
   margin: auto;
-  h1,
+  h2,
   p.lost {
     text-align: center;
     a:hover {

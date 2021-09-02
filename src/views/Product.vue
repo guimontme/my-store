@@ -48,7 +48,7 @@ export default {
       setTimeout(() => {
         api.get(this.url).then((response) => {
           this.product = response.data;
-          document.title = this.product.name + " - My Shop";
+          document.title = this.product.name + " - My Store";
         });
       }, 1000);
     },

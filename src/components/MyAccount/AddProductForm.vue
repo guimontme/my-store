@@ -5,7 +5,7 @@
         Add mew Product
       </button>
       <form class="add_product" v-else>
-        <h2>Add Product</h2>
+        <h3>Add Product</h3>
 
         <label for="product_name">Name</label>
         <input
@@ -19,7 +19,7 @@
         <input type="text" id="price" name="price" v-model="priceInput" />
 
         <label for="photos">Photos</label>
-        <input type="file" name="photos" id="photos" multiple />
+        <input type="file" name="photos" id="photos" title="" multiple />
 
         <label for="description">Description</label>
         <textarea
@@ -86,8 +86,9 @@ export default {
     grid-template-columns: 100px 1fr;
     align-items: center;
 
-    h2 {
+    h3 {
       grid-column: 1/-1;
+      margin-bottom: 0;
     }
     input,
     textarea {
@@ -121,7 +122,7 @@ export default {
       &:hover::before,
       &:active::before {
         background: $secondary;
-        transform: scale(1.1);
+        transform: scale(1.05);
       }
     }
     .btn {

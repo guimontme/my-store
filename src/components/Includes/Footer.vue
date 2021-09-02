@@ -27,11 +27,10 @@ export default {
 
 <style lang="scss">
 footer#footer {
-  padding: 1rem 0;
   background-color: $secondary;
   text-align: center;
   position: relative;
-  top: 85px;
+  top: 80px;
   p {
     color: $offwhite;
     margin-bottom: 0;
