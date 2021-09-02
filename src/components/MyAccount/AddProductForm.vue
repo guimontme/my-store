@@ -2,7 +2,7 @@
   <section class="section_add_product">
     <transition mode="out-in">
       <button class="btn btn--add" v-if="!form_open" @click="form_open = true">
-        Add mew Product
+        Add new Product
       </button>
       <form class="add_product" v-else>
         <h3>Add Product</h3>
@@ -58,9 +58,14 @@ export default {
     },
     addProduct() {
       this.formatProduct();
-      api.post("/products", this.product).then(() => {
-        this.$store.dispatch("getUserProducts");
-      });
+      api
+        .post("/products", this.product)
+        .then(() => {
+          this.$store.dispatch("getUserProducts");
+        })
+        .then(() => {
+          this.form_open = false;
+        });
     },
   },
   watch: {

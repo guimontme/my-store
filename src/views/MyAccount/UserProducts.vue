@@ -12,9 +12,14 @@
       <li v-for="product in user_products" :key="product.id">
         <ProductItem :product="product">
           <p>{{ product.description }}</p>
-          <button class="delete" @click="deleteProduct(product.id)">
+          <button
+            class="delete"
+            @click="deleteProduct(product.id)"
+            v-if="product.sold === 'false'"
+          >
             delete
           </button>
+          <span v-else class="sold">Sold product</span>
         </ProductItem>
       </li>
     </transition-group>
@@ -41,9 +46,14 @@ export default {
     deleteProduct(id) {
       const confirmDetele = window.confirm("Are you sure to delete this item?");
       if (confirmDetele)
-        api.delete(`/products/${id}`).then(() => {
-          this.getUserProducts();
-        });
+        api
+          .delete(`/products/${id}`)
+          .then(() => {
+            this.getUserProducts();
+          })
+          .catch((error) => {
+            console.log(error.reponse);
+          });
     },
   },
   created() {
@@ -60,6 +70,9 @@ export default {
 </script>
 
 <style lang="scss">
+.sold {
+  color: $green;
+}
 // Transition
 
 .list-enter,
