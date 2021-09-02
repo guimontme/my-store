@@ -94,7 +94,6 @@ section.products-container {
     }
 
     .product_card {
-      margin-top: 10px;
       background: #fff;
       position: relative;
       padding: 0;

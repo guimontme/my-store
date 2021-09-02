@@ -9,7 +9,7 @@
       tag="ul"
       class="products_list"
     >
-      <li v-for="(product, index) in user_products" :key="index">
+      <li v-for="product in user_products" :key="product.id">
         <ProductItem :product="product">
           <p>{{ product.description }}</p>
           <button class="delete" @click="deleteProduct(product.id)">

@@ -49,6 +49,7 @@ img {
 .container {
   max-width: 1140px;
   padding: 16px 30px;
+  margin: 0 auto;
 }
 
 // Button
@@ -62,6 +63,7 @@ img {
   box-shadow: 0 4px 8px rgba($primary, 0.4);
   transition: all 0.3s cubic-bezier(1, 0.48, 0.44, 1.47);
   cursor: pointer;
+  font-family: $font_sans;
 
   &:hover {
     background: $secondary;
@@ -173,6 +175,7 @@ textarea {
 
 button {
   cursor: pointer;
+  font-family: $font_sans;
   @include border_radius;
 }
 
