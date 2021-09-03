@@ -7,7 +7,6 @@
         :alt="product.photos[0].title"
         class="produdct_item_img"
       />
-      <span>See Product</span>
     </router-link>
     <div class="info">
       <p class="product_item_price">{{ product.price | numberPrice }}</p>
@@ -36,9 +35,6 @@ export default {
   @include box-style;
   position: relative;
   a {
-    &:hover {
-      text-decoration: underline;
-    }
     right: 20px;
   }
   p {

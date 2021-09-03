@@ -2,7 +2,7 @@
   <section class="user_products">
     <h2>Products</h2>
     <AddProductForm />
-    <h3>Your Products</h3>
+    <h3>Your Products in Display</h3>
     <transition-group
       v-if="user_products"
       name="list"

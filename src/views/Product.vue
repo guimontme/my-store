@@ -73,10 +73,15 @@ section.product {
     }
   }
   .photos {
-    display: flex;
-    overflow: hidden;
+    grid-row: 1 / 3;
+    img {
+      margin-bottom: 30px;
+      @include box-style;
+    }
   }
   .info {
+    position: sticky;
+    top: 30px;
     .product_name {
       font-size: 2.2rem;
       color: $dark_primary;
