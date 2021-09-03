@@ -31,9 +31,6 @@
     <label for="number">Number</label>
     <input type="text" name="number" id="number" v-model="number" />
 
-    <label for="neighbour">Neighbour</label>
-    <input type="text" name="neighbour" id="neighbour" v-model="neighbour" />
-
     <label for="city">City</label>
     <input type="text" name="city" id="city" v-model="city" />
 
@@ -64,7 +61,6 @@ export default {
         "zip_code",
         "street",
         "number",
-        "neighbour",
         "city",
         "state",
         "country",
@@ -83,7 +79,6 @@ export default {
         getCep(zipcode).then((res) => {
           this.street = res.data.logradouro;
           this.city = res.data.localidade;
-          this.neighbour = res.data.bairro;
           this.state = res.data.uf;
         });
       }

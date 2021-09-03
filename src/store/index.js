@@ -16,7 +16,6 @@ export default new Vuex.Store({
       zip_code: "",
       street: "",
       number: "",
-      neighbour: "",
       city: "",
       state: "",
       country: "",
@@ -38,24 +37,25 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    getUser(context, payload) {
-      return api
-        .get(`/users/${payload.id}`)
-        .then((response) => {
-          if (response.data.password === payload.password) {
-            context.commit("UPDATE_USER", response.data);
-            context.commit("UPDATE_LOGIN", true);
-          }
-          return true;
-        })
-        .catch((err) => {
-          console.log(err);
-          return false;
-        });
+    getUser(context) {
+      return api.get(`/user`).then((response) => {
+        context.commit("UPDATE_USER", response.data);
+        context.commit("UPDATE_LOGIN", true);
+      });
     },
     createUser(context, payload) {
       context.commit("UPDATE_USER", { id: payload.email });
-      return api.post("/users", payload);
+      return api.post("/user", payload);
+    },
+    loginUser(context, payload) {
+      return api
+        .login({
+          username: payload.email,
+          password: payload.password,
+        })
+        .then((response) => {
+          window.localStorage.user_token = `Bearer ${response.data.token}`;
+        });
     },
     logout(context) {
       context.commit("UPDATE_USER", {
@@ -72,6 +72,7 @@ export default new Vuex.Store({
         country: "",
       });
       context.commit("UPDATE_LOGIN", false);
+      localStorage.removeItem("user_token");
     },
     getUserProducts(context) {
       api.get(`/products?user_id=${context.state.user.id}`).then((response) => {

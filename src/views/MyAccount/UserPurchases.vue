@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     getPurchases() {
-      api.get(`/transations/?shopper_id=${this.user.id}`).then((res) => {
+      api.get(`/transations/?type=shopper_id`).then((res) => {
         this.purchases = res.data;
       });
     },

@@ -9,7 +9,7 @@
         >
           <router-link :to="{ name: 'product', params: { id: product.id } }">
             <img
-              v-if="product.photos.length > 0"
+              v-if="product.photos"
               :src="product.photos[0].src"
               :alt="product.photos[0].title"
               class="product_img"

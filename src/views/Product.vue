@@ -1,8 +1,8 @@
 <template>
   <section class="product">
     <div class="product" v-if="product">
-      <ul class="photos" v-if="product.photos.length > 0">
-        <li v-for="(photo, index) in photos" :key="index">
+      <ul class="photos" v-if="product.photos">
+        <li v-for="photo in product.photos" :key="photo.title">
           <img :src="photo.src" :alt="photo.title" />
         </li>
       </ul>

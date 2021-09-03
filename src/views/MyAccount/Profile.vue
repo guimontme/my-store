@@ -28,7 +28,7 @@ export default {
     },
   },
   created() {
-    this.verifyUser();
+    // this.verifyUser();
   },
 };
 </script>

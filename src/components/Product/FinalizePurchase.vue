@@ -41,8 +41,6 @@ export default {
   },
   methods: {
     async createTransation() {
-      this.product.sold = "true";
-      await api.put(`/products/${this.product.id}`, this.product);
       return api.post("/transations", this.buy).then(() => {
         this.$router.push({ name: "Purchases" });
       });

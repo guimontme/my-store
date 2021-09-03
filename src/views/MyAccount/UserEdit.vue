@@ -1,6 +1,6 @@
 <template>
   <section class="user_edit">
-    <h1>Edit you user</h1>
+    <h2>Edit you user</h2>
     <UserForm>
       <button class="btn" @click.prevent="updateUser">Update user</button>
     </UserForm>
@@ -19,12 +19,9 @@ export default {
   methods: {
     updateUser() {
       api
-        .put(`/users/${this.$store.state.user.id}`, this.$store.state.user)
+        .put(`/user`, this.$store.state.user)
         .then(() => {
-          this.$store.dispatch("getUser", {
-            id: this.$store.state.user.id,
-            password: this.$store.state.user.password,
-          });
+          this.$store.dispatch("getUser");
           this.$router.push({ name: "Profile" });
         })
         .catch((error) => {

@@ -47,11 +47,10 @@ export default {
     async handleLogin() {
       try {
         if (this.login.email && this.login.password) {
-          const getUser = await this.$store.dispatch("getUser", {
-            id: this.login.email,
-            password: this.login.password,
+          await this.$store.dispatch("loginUser", this.login).then(() => {
+            this.$store.dispatch("getUser");
+            this.$router.push({ name: "Profile" });
           });
-          if (getUser) await this.$router.push({ name: "Profile" });
         }
       } catch (err) {
         console.log(err);

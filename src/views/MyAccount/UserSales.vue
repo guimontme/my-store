@@ -12,7 +12,6 @@
             <p><span>Zip code:</span> {{ sale.address.zip_code }}</p>
             <p><span>Street:</span> {{ sale.address.street }}</p>
             <p><span>Number:</span> {{ sale.address.number }}</p>
-            <p><span>Neighbour:</span> {{ sale.address.neighbour }}</p>
             <p><span>City:</span> {{ sale.address.city }}</p>
             <p><span>State:</span> {{ sale.address.state }}</p>
             <p><span>Country:</span> {{ sale.address.country }}</p>
@@ -43,7 +42,7 @@ export default {
   },
   methods: {
     getSales() {
-      api.get(`/transations/?seller_id=${this.user.id}`).then((res) => {
+      api.get(`/transations/?type=seller_id`).then((res) => {
         this.sales = res.data;
       });
     },
