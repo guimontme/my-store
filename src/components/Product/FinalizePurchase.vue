@@ -31,7 +31,6 @@ export default {
           zip_code: this.user.zip_code,
           street: this.user.street,
           number: this.user.number,
-          neighbour: this.user.neighbour,
           city: this.user.city,
           state: this.user.state,
           country: this.user.country,
@@ -53,10 +52,8 @@ export default {
             if (property != "id" && user[property] === "") return;
           }
           await this.$store.dispatch("createUser", user);
-          await this.$store.dispatch("getUser", {
-            id: user.email,
-            password: user.password,
-          });
+          await this.$store.dispatch("loginUser", user);
+          await this.$store.dispatch("getUser");
           await this.createTransation();
         }
       } catch (err) {

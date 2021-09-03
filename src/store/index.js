@@ -29,7 +29,7 @@ export default new Vuex.Store({
     UPDATE_USER(state, payload) {
       state.user = Object.assign(state.user, payload);
     },
-    UPDATE_USER_PRRODUCTS(state, payload) {
+    UPDATE_USER_PRODUCTS(state, payload) {
       state.user_products = payload;
     },
     ADD_USER_PRODUCTS(state, payload) {
@@ -66,17 +66,17 @@ export default new Vuex.Store({
         zip_code: "",
         street: "",
         number: "",
-        neighbour: "",
         city: "",
         state: "",
         country: "",
       });
       context.commit("UPDATE_LOGIN", false);
+      context.commit("UPDATE_USER_PRODUCTS", []);
       localStorage.removeItem("user_token");
     },
     getUserProducts(context) {
       api.get(`/products?user_id=${context.state.user.id}`).then((response) => {
-        context.commit("UPDATE_USER_PRRODUCTS", response.data);
+        context.commit("UPDATE_USER_PRODUCTS", response.data);
       });
     },
   },

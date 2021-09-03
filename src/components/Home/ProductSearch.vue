@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     searchProduct() {
-      this.$router.push({ query: { q: this.search } });
+      this.$router.push({ query: { s: this.search } });
     },
   },
 };

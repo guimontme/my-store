@@ -26,7 +26,7 @@
         class="not_found"
         key="not_found"
       >
-        <h2>No results are found for "{{ $route.query.q }}"</h2>
+        <h2>No results are found for "{{ $route.query.s }}"</h2>
       </div>
       <PageLoading v-else key="loading" />
     </transition>

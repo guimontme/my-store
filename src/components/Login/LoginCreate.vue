@@ -31,10 +31,11 @@ export default {
             if (property != "id" && user[property] === "") return;
           }
           await this.$store.dispatch("createUser", user);
-          await this.$store.dispatch("getUser", {
-            id: user.email,
+          await this.$store.dispatch("loginUser", {
+            email: user.email,
             password: user.password,
           });
+          await this.$store.dispatch("getUser");
           await this.$router.push({ name: "Profile" });
         }
       } catch (err) {
